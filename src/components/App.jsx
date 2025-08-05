@@ -1,17 +1,28 @@
+import { Container, Header, Link } from './App.styled';
 import { Routes, Route } from 'react-router-dom'
-import Layout from './Layout/Layout'
 
-import ToDoPage from './pages/ToDoPage'
-import ToDoDetails from './ToDo/ToDoDetails'
+import Home from '../pages/Home';
+import ToDo from '../pages/ToDo';
+import NotFound from '../pages/NotFound';
 
 const App = () => {
 	return (
-		<Routes>
-			<Route path='/' element={<Layout />}>
-				<Route path='todo' element={<ToDoPage />} />
-				<Route path='todo/:id/:title' element={<ToDoDetails />} />
-			</Route>
-		</Routes>
+    <Container>
+      <Header>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/todo">ToDo</Link>
+        </nav>
+      </Header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="todo" element={<ToDo />}>        
+
+          
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Container>
 	)
 }
 
